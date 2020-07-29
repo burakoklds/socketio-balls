@@ -1,0 +1,14 @@
+{
+  "name": "socketio-balls",
+  "description": "",
+  "main": "",
+  "authors": [
+    "burakoklds <burak_ld@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/burakoklds/socketio-balls",
+  "dependencies": {
+    "angular": "^1.8.0",
+    "semantic": "^2.4.1"
+  }
+}
