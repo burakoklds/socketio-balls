@@ -1,13 +1,14 @@
 doctype html
-html
+html(ng-app="app")
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
     meta(charset='UTF-8')
-    link(rel='stylesheet', href='/bower_components/semantic/dist/semantic.min.css')
-    link(rel='stylesheet', href='assets/stylesheets/style.css')
-  body
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/semantic/dist/semantic.min.css')
+  body(ng-controller="indexController")
     block content
 
     block javascripts
       script(src="/angular/angular.min.js")
+      script(src="/javascripts/main.js")
+      script(src="/javascripts/indexController.js")
