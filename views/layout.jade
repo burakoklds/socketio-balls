@@ -5,7 +5,7 @@ html(ng-app="app")
     meta(charset='UTF-8')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/semantic/dist/semantic.min.css')
-  body(ng-controller="indexController")
+  body(ng-controller="indexController", ng-init="init()")
     block content
 
     block javascripts
