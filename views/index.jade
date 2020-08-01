@@ -3,7 +3,8 @@ extends layout
 block content
   .ui.one.column.stackable.center.aligned.page.grid.margin-30
       .column.twelve.wide
-        .ui.stacked.segment.gameArea
+        .ui.stacked.segment.gameArea(ng-Click="onClickPlayer($event)")
+
           .circle.blue(ng-repeat="player in players" , 
             ng-style="{ 'left': player.position.y , 'top': player.position.x }",
             id="{{ player.id }}"
