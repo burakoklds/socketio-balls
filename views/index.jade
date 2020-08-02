@@ -14,16 +14,23 @@ block content
               span.name {{ player.username }}
               //.message Selam
           
-        .ui.items.chat
-          .item(ng-repeat="message in messages")
-            .content(ng-if="!message.type")
-            span [SERVER] &nbsp;
-              a.header.name {{message.username}} &nbsp;
-              .description.message(ng-if="!message.type.message")
+        .ui.items.chat#chat-area
+          .item(ng-repeat="message in messages" , ng-if="!message.type.code")
+            .content(ng-if="!message.type.code")
+              | [SERVER] &nbsp;
+             a.header.name {{message.username}} &nbsp;
+              .description.message(ng-if="!message.type.message && !message.type.code")
                   | ayrıldı.
-              .description.message(ng-if="message.type.message")
+              .description.message(ng-if="message.type.message ")
                   | katıldı.
-        .ui.action.input.fluid
-          input(type='text', placeholder='Type here...')
-          button.ui.button Send
+
+          .item(ng-repeat="message in messages")
+           .content(ng-if="message.type.code")
+              a.header.name {{message.username}} &nbsp;
+              .description.message
+                  | {{ message.text }}
+
+        .ui.action.input.fluid(ng-submit="newMessage()")
+          input(ng-model='message',  placeholder='Type here...')
+          button.ui.button(type="submit" ng-click="newMessage()" ) Send
 

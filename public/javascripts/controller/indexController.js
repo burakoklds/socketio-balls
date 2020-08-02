@@ -12,6 +12,13 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
             return false;
     };
 
+    function scrollTop(){
+        setTimeout(() => {
+            const element = document.getElementById('chat-area');
+            element.scrollTop = element.scrollHeight;
+        });
+    }
+
     function initSocket(username) {
         const connectionOptions = {
             reconnectionAttempts: 3,
@@ -61,10 +68,15 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
                 });
                 
                 socket.on('animate' , data => {
-                    console.log(data);
                     $('#' + data.socketId).animate({ 'left': data.x , 'top': data.y }, () => {
                         animate = false;
                     });
+                });
+
+                socket.on('newMessage', message => {
+                    $scope.messages.push(message);
+                    $scope.$apply();
+                    scrollTop();
                 });
 
                 let animate = false;
@@ -82,6 +94,23 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
                     }
                 };
 
+            $scope.newMessage = () => {
+                let message = $scope.message;
+                const messageData = {
+                    type: {
+                        code: 1
+                    }, //info
+                    username: username,
+                    text: message
+                };
+                $scope.messages.push(messageData);
+                $scope.message = '';
+
+                socket.emit('newMessage', messageData);
+
+                
+                scrollTop();
+            };
 
             }).catch((err) => {
                 console.log(err);
