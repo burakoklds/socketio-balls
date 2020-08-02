@@ -12,7 +12,7 @@ block content
           )
             .relative
               span.name {{ player.username }}
-              //.message Selam
+              .message 
           
         .ui.items.chat#chat-area
           .item(ng-repeat="message in messages" , ng-if="!message.type.code")

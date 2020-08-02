@@ -54,7 +54,7 @@ body{
   padding: 3px 5px;
   left: 0;
   width: 100%;
-  display: inline-block;
+  display: none;
 }
 
 .chat{
@@ -77,6 +77,3 @@ body{
   margin:.3em 0!important;
 }
 
-.chat .description{
-  margin-left: 0em;
-}
